@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+#define ll long long int
+int isPrime(ll n){
+    if (n == 2 || n == 3) return 1;
+    if (n % 2 == 0 || n % 3 == 0 || n < 2) return 0; 
+    for (ll i = 5; i<= sqrt(n); i+= 6){
+        if ( n%i == 0 || n % (i+2) == 0) return 0; 
+    }
+    return 1; 
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        ll l, r; 
+        cin >> l >> r; 
+        ll a = (int)sqrt(l); 
+        ll b = (int)sqrt(r); 
+        ll count = 0; 
+        if ( a*a == l && isPrime(a) == 1) count++; 
+        for (ll i = a+1; i<=b; i++ ){
+            if (isPrime(i) == 1) count++; 
+        }
+        cout << count << endl; 
+    }
+    return 0;
+}
