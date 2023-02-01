@@ -1,0 +1,35 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+char x[1000000] ={}; 
+int n; 
+int test(char x[], int n){
+    if (x[0] != 'H' || x[n-1] != 'A') return 0; 
+    for (int i = 0; i<n-1; i++) {
+        if (x[i] == 'H' && x[i+1] == 'H') return 0; 
+    }
+    return 1; 
+}
+void SinhXauHA(char x[], int n){
+    for (int i = 0; i<n; i++) x[i] = 'A'; 
+    while (1){ 
+        if(test(x,n) == 1) {
+            for (int i = 0; i<n; i++) cout << x[i]; 
+            cout << endl;
+        }
+        int i = n-1; 
+        while (i > -1 && x[i] == 'H') i--; 
+        if (i == -1) return; 
+        x[i] = 'H'; 
+        for (int j = i+1; j<n; j++) x[j] = 'A'; 
+    }     
+}
+int main(){
+    int t = 0; 
+    cin >> t; 
+    while (t--){ 
+        cin >> n;  
+        SinhXauHA(x, n); 
+    } 
+    return 0;
+}
