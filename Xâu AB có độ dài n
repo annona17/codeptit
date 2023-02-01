@@ -1,0 +1,27 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+void SinhXauAB(string str, int n){
+    for (int i = 0; i<n; i++) str[i] = 'A'; 
+    while (1){
+        for (int i = 0; i<n; i++) cout << str[i]; 
+        cout << " ";
+        int i = n-1; 
+        while (i > -1 && str[i] == 'B') i--; 
+        if (i == -1) return; 
+        str[i] = 'B'; 
+        for (int j = i+1; j<n; j++) str[j] = 'A'; 
+    }     
+}
+int main(){
+    int t = 0, n = 0; 
+    cin >> t; 
+    while (t--){ 
+        cin >> n; 
+        string str = ""; 
+        SinhXauAB(str, n); 
+        cout << endl; 
+    } 
+    return 0;
+}
+
