@@ -1,0 +1,27 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+int n, k; 
+int a[1000000]; 
+void SinhToHop(int a[], int n, int k){
+    for (int i = 1; i<=k; i++) a[i] = i; 
+    while(1){
+        for (int i = 1; i<=k; i++) cout << a[i]; 
+        cout << " "; 
+        int i = k; 
+        while(i>0 && a[i] >= n-k+i) i--; 
+        if (i == 0) return; 
+        a[i]++; 
+        for (int j = i+1; j<=k; j++) a[j] = a[i]+j-i;    
+    }
+}
+int main(){
+    int t = 0; 
+    cin >> t; 
+    while (t--){ 
+        cin >> n >> k;  
+        SinhToHop(a,n,k); 
+        cout << endl; 
+    } 
+    return 0;
+}
