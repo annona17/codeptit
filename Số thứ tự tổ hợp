@@ -1,0 +1,39 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+int n, k; 
+int a[1000000]; 
+int test (int a[], int x[], int k){
+    for (int i = 1; i<=k; i++){
+        if (a[i] != x[i]) return 0; 
+    }
+    return 1; 
+}
+void SinhToHop(int a[], int x[], int n, int k){
+    for (int i = 1; i<=k; i++) a[i] = i;
+    int tt = 1;  
+    while(1){
+        if(test(a,x,k) == 1) {
+            cout << tt; 
+            return; 
+        }
+        int i = k; 
+        while(i>0 && a[i] >= n-k+i) i--; 
+        if (i == 0) return; 
+        a[i]++; 
+        for (int j = i+1; j<=k; j++) a[j] = a[i]+j-i; 
+        tt++;    
+    }
+}
+int main(){
+    int t = 0; 
+    cin >> t; 
+    while (t--){ 
+        cin >> n >> k;  
+        int x[100000]= {}; 
+        for (int i =1; i<=k; i++) cin >> x[i]; 
+        SinhToHop(a,x,n,k); 
+        cout << endl; 
+    } 
+    return 0;
+}
