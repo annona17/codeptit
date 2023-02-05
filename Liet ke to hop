@@ -1,0 +1,37 @@
+//na
+#include<bits/stdc++.h>
+
+using namespace std;
+#define ll long long int
+int x[100000] = {}; 
+void SinhToHop(int x[], int b[], int n, int k){
+    for (int i = 1; i<=n; i++) x[i] = i; 
+    while(1){
+        for (int i = 1; i<=k; i++) cout << b[x[i]] << " "; 
+        cout << endl; 
+        int i = k; 
+        while(i>0 && x[i] >= n-k+i) i--; 
+        if (i == 0) return; 
+        x[i]++; 
+        for (int j = i+1; j<=k; j++) x[j] = x[i]+j-i;    
+    }
+}
+int main(){
+    int n, k; 
+    cin >> n >> k; 
+    int a[100000], b[100000], dem[100000]; 
+    for (int i = 1; i<=n; i++){
+        cin >> a[i]; 
+        dem[a[i]]++; 
+    }
+    int tt = 1; 
+    for (int i = 1; i<=n; i++){
+        if( dem[a[i]] != 0){
+            b[tt++] = a[i];
+            dem[a[i]] = 0; 
+        }
+    }
+    sort(b, b+ tt);
+    SinhToHop(x,b,tt-1,k); 
+    return 0;
+}
