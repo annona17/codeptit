@@ -1,0 +1,29 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+
+const long long M = 1e9+7;
+
+long long powmod(long long a, long long b){
+    if(b == 1) return a % M;
+    long long res = powmod(a,b/2);
+    res = res*res%M;
+    if(b%2==1) return res*a%M;
+    return res;
+}
+
+int main()
+{
+    int t; cin >> t;
+    while(t--){
+        long long n, x = 0; 
+        cin >> n;
+        long long m = n;
+        while(m>0){
+            long long a = m % 10;
+            x = x*10 + a;
+            m /= 10;
+        }
+        cout << powmod(n,x) << endl;
+    }
+}
