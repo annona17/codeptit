@@ -1,0 +1,27 @@
+//na
+#include<bits/stdc++.h>
+
+using namespace std;
+#define ll long long int
+
+int main(){
+    int n = 0; 
+    cin >> n; 
+    int a[100005] = {}; 
+    for (int i = 0; i< n; i++) cin >> a[i];
+    int b[n+5][n+5];  
+    for (int i = 0; i<n-1; i++){
+        int min_idx = i;  
+        for (int j = i+1; j<n; j++){
+            if( a[j] < a[min_idx]) min_idx = j; 
+        }
+        swap(a[i], a[min_idx]);
+        for (int j = 0; j<n; j++) b[i][j] = a[j]; 
+    }
+    for (int i = n-2; i>=0; i--){
+        cout << "Buoc " + to_string(i+1) + ": ";  
+        for (int j = 0; j<n; j++) cout << b[i][j] << " "; 
+        cout << endl; 
+    }
+    return 0;
+}
