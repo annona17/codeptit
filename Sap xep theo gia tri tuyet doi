@@ -1,0 +1,29 @@
+//na
+#include<bits/stdc++.h>
+
+using namespace std;
+#define ll long long int
+
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        int n = 0, x = 0; 
+        cin >> n >> x; 
+        int a[100005] = {};
+        for (int i = 0; i< n; i++) cin >> a[i] ; 
+        for (int i = 0; i<n ; i++){
+            int check = 0; 
+            for (int j = 0; j<n-i-1; j++){
+                if(abs(x - a[j]) > abs (x - a[j+1])) {
+                    check = 1; 
+                    swap(a[j], a[j+1]); 
+                }
+            }
+            if( !check ) break; 
+        }
+        for (int i = 0; i<n ; i++) cout << a[i] << " "; 
+        cout << endl; 
+    }
+    return 0;
+}
