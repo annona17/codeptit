@@ -1,0 +1,31 @@
+//na
+#include<bits/stdc++.h>
+
+using namespace std;
+#define ll long long int
+
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        int n = 0, sum = 0, tmp; 
+        cin >> n; 
+        vector <int> a; 
+        for (int i = 0; i<n; i++) {
+            cin >> tmp; 
+            sum += tmp; 
+            a.push_back(tmp); 
+        }
+        int test = 0, s1 = 0; 
+        for (int i = 0; i<n; i++){
+            if (s1 == (sum - s1 - a[i])){
+                test = 1; 
+                cout << i+1 << endl; 
+                break; 
+            }
+            s1 += a[i]; 
+        }
+        if ( !test ) cout << "-1" << endl;  
+    }
+    return 0;
+}
