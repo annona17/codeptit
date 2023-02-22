@@ -1,0 +1,24 @@
+//na
+#include<bits/stdc++.h>
+
+using namespace std;
+#define ll long long int
+ll F[100] = {}; 
+char FiboWord(ll n, ll i){
+    if( n == 1) return 'A'; 
+    if( n == 2) return 'B';
+    if ( i <= F[n-2]) return FiboWord(n-2, i); 
+    return FiboWord(n-1, i - F[n-2]); 
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        ll n, i; 
+        cin >> n >> i; 
+        F[0] = 0; F[1] = 1; 
+        for (int j = 2; j<93; j++) F[j] = F[j-1] + F[j-2]; 
+        cout << FiboWord(n,i) << endl; 
+    }
+    return 0;
+}
