@@ -1,0 +1,27 @@
+//na
+#include<bits/stdc++.h>
+
+using namespace std;
+#define ll long long int
+ll S[100] = {}; 
+void Size(){ 
+    S[1] = 1; 
+    for (int i = 2; i<26; i++) S[i] = S[i-1] * 2 + 1; 
+}
+char Kytu(ll n, ll k){
+    Size(); 
+    if (n == 1) return 'A'; 
+    if ( k == S[n-1] + 1) return ('A' + n - 1); 
+    if ( k <= S[n-1]) return Kytu(n-1,k); 
+    return Kytu(n-1, k-S[n-1]-1); 
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        ll n = 0, k = 0; 
+        cin >> n >> k;
+        cout << Kytu(n,k) << endl;      
+    }
+    return 0;
+}
