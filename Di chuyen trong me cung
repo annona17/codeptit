@@ -1,0 +1,42 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+int n, ok, a[100][100] = {}; 
+char c[100] = {};
+void Move(int i, int j, int k){
+    if ( i == n && j == n ){
+        ok = 1; 
+        for (int i = 1; i<=k; i++) cout << c[i];  
+        cout << " ";  
+        return; 
+    }
+    if (i<n && a[i+1][j] == 1) {
+        c[k] = 'D';  
+        a[i+1][j] = 0; 
+        Move(i+1,j, k+1); 
+        a[i+1][j] = 1; 
+    }
+    if ( j<n && a[i][j+1] == 1){
+        a[i][j+1] = 0; 
+        c[k] = 'R';  
+        Move(i, j+1, k+1); 
+        a[i][j+1] = 1; 
+    }
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        cin >> n; 
+        ok = 0; 
+        for (int i = 1; i<=n; i++){
+            for (int j = 1; j<=n; j++) cin >> a[i][j]; 
+        }
+        if (a[1][1] && a[n][n]) Move(1,1,1);
+        if (ok) cout << endl;
+        else cout << "-1\n";   
+    }
+    return 0;
+}
