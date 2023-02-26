@@ -1,0 +1,54 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+int n,k,l,x[100]= {}; 
+vector <string> a,b; 
+map <string, int> mp;
+
+void input(){
+    cin >> n >> k;  
+    string tmp; 
+    for (int i = 0; i<n; i++){
+        cin >> tmp; 
+        mp[tmp]++; 
+        a.push_back(tmp); 
+    }
+    for ( int i = 0; i< n; i++){
+        if ( mp[a[i]] > 0 ){
+            b.push_back(a[i]); 
+            mp[a[i]] = 0; 
+        }
+    }
+    sort(b.begin(), b.end()); 
+    l = b.size(); 
+}
+void in(){
+    for (int i = 1; i<=k; i++) cout << b[x[i]-1] << " ";
+    cout << endl; 
+}
+void getName(){
+    for (int i = 1; i<=k; i++) x[i] = i; 
+    while(1){
+        in();  
+        int i = k; 
+        while(i>0 && x[i] >= l-k+i) i--; 
+        if (i == 0) return; 
+        x[i]++; 
+        for (int j = i+1; j<=k; j++) x[j] = x[i]+j-i;    
+    }
+}
+int main(){ 
+    input(); 
+    getName(); 
+    return 0;
+}
+/*
+quay lui 
+for (int j = x[i-1]+1; j<=l-k+i; j++){
+        x[i]= j; 
+        if (i == k) in(); 
+        else getName(i+1); 
+    }
+*/
