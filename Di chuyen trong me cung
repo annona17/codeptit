@@ -1,16 +1,15 @@
 //na
 #include<bits/stdc++.h>
 using namespace std;
-#define ll long long int
 
 int n, ok, a[100][100] = {}; 
-char c[100] = {};
+char c[1000] = {};
 void Move(int i, int j, int k){
-    if ( i == n && j == n ){
-        ok = 1; 
-        for (int i = 1; i<=k; i++) cout << c[i];  
-        cout << " ";  
-        return; 
+    if(i==n && j==n){
+        for(int x = 1; x<k; x++) cout << c[x];
+        cout << " ";
+        ok = 1;
+        return;
     }
     if (i<n && a[i+1][j] == 1) {
         c[k] = 'D';  
@@ -19,8 +18,8 @@ void Move(int i, int j, int k){
         a[i+1][j] = 1; 
     }
     if ( j<n && a[i][j+1] == 1){
-        a[i][j+1] = 0; 
         c[k] = 'R';  
+        a[i][j+1] = 0; 
         Move(i, j+1, k+1); 
         a[i][j+1] = 1; 
     }
