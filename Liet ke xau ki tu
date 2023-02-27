@@ -1,0 +1,24 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+
+char c; 
+int n; 
+string a; 
+void in(){
+    for (int x = 1; x<=n; x++) cout << a[x]; 
+    cout << endl; 
+}
+void LkXkt(int i){
+    for (char j = a[i-1]; j<=c; j++){
+        a[i] = j; 
+        if ( i == n) in(); 
+        else LkXkt(i+1); 
+    }
+}
+int main(){
+    cin >> c >> n; 
+    a[0] = 'A'; 
+    LkXkt(1); 
+    return 0;
+}
