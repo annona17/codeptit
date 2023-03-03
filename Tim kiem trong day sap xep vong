@@ -1,0 +1,32 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+
+int Search(vector <int> a, int l, int r, int x){
+    if (l>r) return -1; 
+    int m = (l+r)/2; 
+    if (a[m] == x) return m; 
+    if ( a[l] <= a[m] ){
+        if ( a[l] <= x && x <= a[m]) return Search(a,l,m-1,x); 
+        return Search(a,m+1,r,x);
+    }
+    if (a[m] <= a[r]){
+        if (x >= a[m] && x <= a[r]) return Search(a,m+1,r,x); 
+        return Search(a,l,m-1,x); 
+    }    
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        int n, x,tmp; 
+        cin >> n >> x; 
+        vector<int> a; 
+        for (int i = 0; i<n; i++){
+            cin >> tmp; 
+            a.push_back(tmp); 
+        }
+        cout << Search(a,0,n-1,x)+1 << endl; 
+    }
+    return 0;
+}
