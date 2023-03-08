@@ -1,0 +1,33 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int pow10(int cnt){
+    int tmp = 1; 
+    for (int i = 0; i<cnt; i++ )tmp *= 10; 
+    return tmp; 
+}
+int maxSo(int x){
+    int a = x, cnt = 0; 
+    while ( x > 0){
+        if ( x%10 == 5) a += pow10(cnt);  
+        x /= 10; 
+        cnt++;  
+    }
+    return a; 
+}
+int minSo(int x){
+    int a = x, cnt = 0; 
+    while ( x > 0){
+        if ( x%10 == 6) a -= pow10(cnt);  
+        x /= 10; 
+        cnt++;  
+    }
+    return a; 
+}
+int main(){
+    int a,b; 
+    cin >> a >> b;
+    cout << minSo(a) + minSo(b) << " " << maxSo(a) + maxSo(b)<< endl;  
+    return 0;
+}
