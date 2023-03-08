@@ -1,0 +1,28 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+const ll mod = 1e9+7; 
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        int n = 0; cin >> n; 
+        priority_queue<ll, vector<ll>, greater<ll>> q; 
+        ll x; 
+        for (int i = 0; i<n; i++) {
+            cin >> x; 
+            q.push(x%mod); 
+        }
+        ll val = 0; 
+        while (q.size() >= 2){
+            ll min1 = q.top(); q.pop(); 
+            ll min2 = q.top(); q.pop(); 
+            ll sum = (min1+min2)%mod; 
+            val += sum; val %= mod; 
+            q.push(sum); 
+        }
+        cout << val<< endl; 
+    }
+    return 0;
+}
