@@ -1,0 +1,34 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+bool cmp (ll a, ll b){
+    return a>b; 
+}
+void checkTriangle() {
+    int n = 0; cin >> n; 
+    ll a[100005] = {}; 
+    for (int i = 0; i<n; i++) cin >> a[i]; 
+    sort(a, a+n, cmp); 
+    for(int i = 0; i < n-2; i++) {
+        for (int j = i+1; j<n-1; j++){
+            ll tmp = a[i]*a[i] - a[j]*a[j]; 
+            ll p = (ll)sqrt(a[i]*a[i] - a[j]*a[j]); 
+            if (p*p == tmp){
+                if (binary_search(a,a+n,p, cmp)){
+                    cout << "YES\n"; 
+                    return; 
+                }
+            }
+        }
+    }
+    cout << "NO\n"; 
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        checkTriangle(); 
+    }
+    return 0;
+}
