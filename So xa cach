@@ -1,0 +1,36 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int n, a[15], b[15]; 
+int test(){
+    for (int x = 1; x<n; x++){
+        if (abs(a[x] - a[x+1]) == 1) return 0; 
+    }
+    return 1; 
+}
+void in(){
+    for (int x = 1; x<=n; x++) cout << a[x]; 
+    cout << endl; 
+}
+void Try(int i){
+    for (int j = 1; j<=n; j++){
+        if ( b[j] == 0){
+            b[j] = 1; 
+            a[i] = j; 
+            if ( i == n) {
+                if (test()) in(); 
+            }
+            else Try(i+1); 
+            b[j] = 0; 
+        }
+    }
+}
+int main(){
+    int t = 0; cin >> t;
+    while (t--){
+        cin >> n;
+        Try(1);  
+    }
+    return 0;
+}
