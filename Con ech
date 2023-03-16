@@ -1,0 +1,20 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+ll a[55] = {}; 
+void getArr(){
+    a[0] = 1; a[1] = 1; a[2] = 2; 
+    for (int i = 3; i<=50; i++) a[i] = a[i-1] + a[i-2] + a[i-3]; 
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    getArr(); 
+    while (t--){
+        int n; 
+        cin >> n;
+        cout << a[n] <<endl;  
+    }
+    return 0;
+}
