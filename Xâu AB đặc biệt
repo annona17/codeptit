@@ -1,0 +1,49 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+char a[1000000]; 
+int n, k; 
+vector <string> s; 
+int KT(){
+    int dem = 0;
+    int cnt = 0;  
+    for (int i = 1; i<=n; i++){
+        if ( a[i] == 'A'){
+            dem++; 
+            if ( i==n){
+                if ( dem >k) return 0; 
+                if ( dem == k) cnt ++; 
+            }
+        }
+        else {
+            if (dem>k) return 0; 
+            if (dem == k) cnt ++; 
+            dem = 0; 
+        }
+    }
+    return cnt == 1;   
+}
+void Sinh(){
+    for (int i = 1; i<=n; i++) a[i] = 'A'; 
+    while (1){
+        if (KT()){ 
+            string tmp = ""; 
+            for (int i = 1; i<=n; i++) tmp += a[i] ;  
+            s.push_back(tmp); 
+        }
+        int i = n; 
+        while (i > 0 && a[i] != 'A') i--; 
+        if (i == 0) {
+            cout << s.size() << endl; 
+            for (string x: s) cout << x << endl; 
+            return; 
+        }
+        a[i] = 'B'; 
+        for (int j = i+1; j<=n; j++) a[j] = 'A'; 
+    }   
+}
+int main(){
+    cin >> n >> k; 
+    Sinh(); 
+    return 0;
+}
