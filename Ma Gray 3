@@ -1,0 +1,19 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t = 0; cin >> t;
+    while (t--){
+        string bina; cin >> bina; 
+        int n = bina.length(); 
+        string gray = ""; 
+        gray += bina[0]; 
+        for (int i = 1; i<n; i++){
+            if ( bina[i] != bina[i-1]) gray += "1"; 
+            else gray += "0"; 
+        }
+        cout << gray << endl; 
+    }
+    return 0;
+}
