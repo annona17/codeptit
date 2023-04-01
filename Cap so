@@ -1,0 +1,59 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+struct Capso{
+    int x,y; 
+}; 
+bool cmp(Capso a, Capso b){
+    return a.y < b.y; 
+}
+int n; 
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        cin >> n; 
+        Capso a[105] = {}; 
+        for (int i = 0; i<n; i++) cin >> a[i].x >> a[i].y; 
+        sort(a, a+n, cmp); 
+        int val = 0, f[105] = {}; 
+        for (int i = 0; i<n; i++) f[i] = 1; 
+        for (int i = 0; i<n; i++){
+            for (int j = 0; j<i; j++){
+                if (a[j].y < a[i].x ) f[i] = max(f[i], f[j]+1); 
+            } 
+            val = max(val, f[i]); 
+        }
+        cout << val << endl; 
+    }
+    return 0;
+}//na
+#include<bits/stdc++.h>
+using namespace std;
+struct Capso{
+    int x,y; 
+}; 
+bool cmp(Capso a, Capso b){
+    return a.y < b.y; 
+}
+int n; 
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        cin >> n; 
+        Capso a[105] = {}; 
+        for (int i = 0; i<n; i++) cin >> a[i].x >> a[i].y; 
+        sort(a, a+n, cmp); 
+        int val = 0, f[105] = {}; 
+        for (int i = 0; i<n; i++) f[i] = 1; 
+        for (int i = 0; i<n; i++){
+            for (int j = 0; j<i; j++){
+                if (a[j].y < a[i].x ) f[i] = max(f[i], f[j]+1); 
+            } 
+            val = max(val, f[i]); 
+        }
+        cout << val << endl; 
+    }
+    return 0;
+}
