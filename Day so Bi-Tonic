@@ -1,0 +1,36 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main(){
+    int t; 
+    cin >> t; 
+    while (t--){
+        int n, sum = 0; 
+        cin >> n; 
+        int a[100005] = {}, IncSum[100005] = {}, DecSum[100005] = {}; 
+        for (int i = 0; i<n; i++)  cin >> a[i]; 
+        for (int i = 0; i<n; i++){
+            IncSum[i] = a[i]; 
+            for (int j = 0; j<i; j++){
+                if ( a[j] < a[i]){
+                    IncSum[i] = max(IncSum[i], IncSum[j] + a[i]); 
+                }
+            }
+        }
+        for (int i = n-1; i>=0; i--){
+            DecSum[i] = a[i]; 
+            for (int j = n-1; j>i; j--){
+                if (a[j] < a[i]){
+                    DecSum[i] = max(DecSum[i], DecSum[j] + a[i]); 
+                }
+            }
+        }
+        int BiSum = IncSum[0] + DecSum[0] - a[0]; 
+        for (int i = 1; i<n; i++){
+            BiSum = max(BiSum, IncSum[i] + DecSum[i] - a[i]); 
+        } 
+        cout << BiSum << endl; 
+    }
+    return 0;
+}
