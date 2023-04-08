@@ -1,0 +1,22 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    string s; 
+    vector <int> a; 
+    while (cin >> s){
+        if ( s == "push"){
+            int n; cin >> n; 
+            a.push_back(n); 
+        } 
+        else if ( s == "show"){
+            if (a.empty()) cout << "empty\n"; 
+            else {
+                for (auto x:a) cout << x << " "; 
+                cout << endl; 
+            } 
+        }
+        else if (s == "pop") a.pop_back(); 
+    }
+    return 0;
+}
