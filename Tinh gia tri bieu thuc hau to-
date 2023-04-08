@@ -1,0 +1,36 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int tinh(int a, int b, char c){
+    if ( c == '+') return a+b; 
+    if ( c == '-') return a-b; 
+    if ( c == '*') return a*b; 
+    if ( c == '/') return a/b; 
+}
+void TinhHauTo(string s){
+    stack<int> st; 
+    for (int i = 0; i < s.length(); i++) {
+        if (isdigit(s[i])) {
+            int tmp = s[i] - '0'; 
+            st.push(tmp); 
+        }else {
+            int a = st.top(); st.pop(); 
+            int b = st.top(); st.pop(); 
+            int x = tinh(b, a, s[i]); 
+            st.push(x); 
+        }
+    }
+    cout << st.top() << endl; 
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        scanf (" "); 
+        string s; 
+        cin >> s; 
+        TinhHauTo(s); 
+    }
+    return 0;
+}
