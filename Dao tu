@@ -1,0 +1,23 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        scanf(" "); 
+        string s, tmp; 
+        getline(cin, s); 
+        stack<string> a; 
+        stringstream ss(s); 
+        while (ss >> tmp){
+            a.push(tmp); 
+        }
+        while (!a.empty()){
+            cout << a.top() << " "; 
+            a.pop(); 
+        }
+        cout << endl; 
+    }
+    return 0;
+}
