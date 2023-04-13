@@ -1,0 +1,36 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+void Solve(int n){
+    queue<string> Q; 
+    Q.push("6"); 
+    Q.push("8"); 
+    vector<string> s; 
+    while (1){
+        string tmp = Q.front(); 
+        s.push_back(tmp); 
+        Q.pop(); 
+        if (tmp.size() < n){
+            Q.push(tmp + "6"); 
+            Q.push(tmp + "8"); 
+        }else break; 
+    }
+    while (!Q.empty()) {
+        s.push_back(Q.front()); 
+        Q.pop(); 
+    }
+    cout << s.size() << endl; 
+    for (int i = s.size()-1; i>= 0; i--){
+        cout << s[i] << " "; 
+    }
+    cout << endl; 
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        int n; cin >> n; 
+        Solve(n); 
+    }
+    return 0;
+}
