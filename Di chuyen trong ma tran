@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n, m, C[1005][1005], a[1005][1005]; 
+void Dichuyen(){
+    int i, j, x; 
+    memset(C, -1, sizeof(C)); 
+    queue<pair<int, int> > Q; 
+    Q.push({1,1}); 
+    C[1][1] = 0; 
+    while (!Q.empty()){
+        pair<int, int> t = Q.front(); 
+        i = t.first; j = t.second; 
+        x = a[i][j]; Q.pop(); 
+        if (C[i][j+x] == -1){
+            Q.push({i, j+x}); 
+            C[i][j+x] = C[i][j] +1; 
+        }
+        if (C[i+x][j] == -1){
+            Q.push({i+x, j}); 
+            C[i+x][j] = C[i][j] +1; 
+        }
+        if (C[n][m] != -1) break; 
+    }
+    cout << C[n][m] << endl; 
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        cin >> n >> m; 
+        memset(a, 0, sizeof(a)); 
+        for (int i = 1; i<=n; i++){
+            for (int j = 1; j<=m; j++) cin >> a[i][j]; 
+        }
+        Dichuyen(); 
+    }
+    return 0;
+}
