@@ -1,0 +1,48 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int check(int n){
+    map<int, int> mp; 
+    mp.clear(); 
+    while (n>0){
+        mp[n%10]++; 
+        if (mp[n%10] > 1) return 0; 
+        n/= 10; 
+    }
+    return 1; 
+}
+void So12345(int l, int r){
+    int dem = 0; 
+    queue<int> q; 
+    q.push(1); 
+    q.push(2); 
+    q.push(3); 
+    q.push(4); 
+    q.push(5); 
+    while (1){
+        int x = q.front(); 
+        q.pop(); 
+        if (x > r) break; 
+        else if(check(x)) {
+            if (x>=l) dem++; 
+            q.push(x*10);
+            q.push(x*10+1);
+            q.push(x*10+2);
+            q.push(x*10+3);
+            q.push(x*10+4);
+            q.push(x*10+5);
+        }
+    }
+    cout << dem << endl; 
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        int l, r; 
+        cin >> l >> r; 
+        So12345(l,r); 
+    }
+    return 0;
+}
