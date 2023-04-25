@@ -1,0 +1,27 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+int n,m, vs[1005] = {}; 
+vector<int> lt[1005]; 
+int main(){
+    int t = 0, x, y;
+    cin >> t;
+    while (t--){
+        memset(vs, 0, sizeof(vs)); 
+        for (int i = 0; i<1005; i++) lt[i].clear(); 
+        cin >> n >> m; 
+        for (int i = 1; i<=m; i++){
+            cin >> x >> y; 
+            lt[x].push_back(y);
+            lt[y].push_back(x); 
+        }
+        int cnt = 0; 
+        for (int i = 1; i<=n; i++){
+            if (lt[i].size()%2 == 1) cnt++; 
+        }
+        if ( cnt == 0) cout << "2\n"; 
+        else if (cnt == 2) cout << "1\n"; 
+        else cout << "0\n"; 
+    }
+    return 0;
+}
