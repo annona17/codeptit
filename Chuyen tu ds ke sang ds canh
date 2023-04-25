@@ -1,0 +1,18 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n = 0;
+    cin >> n;
+    for (int i = 1; i<=n; i++){
+        scanf(" "); 
+        string s, tmp; 
+        getline(cin, s); 
+        stringstream ss(s); 
+        while(ss >> tmp){
+            int x = stoi(tmp); 
+            if (x > i) cout << i << " " << x << endl; 
+        }   
+    }
+    return 0;
+}
