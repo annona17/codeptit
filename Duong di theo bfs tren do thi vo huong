@@ -1,0 +1,54 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+int n,m,u,v, vs[1005] = {}, e[1005] = {}; 
+vector<int> lt[1005]; 
+void bfs(int u ){
+    queue<int> q; 
+    q.push(u); vs[u] = 1; 
+    while (!q.empty()){
+        int x = q.front(); q.pop();  
+        for (int i : lt[x]){
+            if (!vs[i]) {
+                e[i] = x; 
+                vs[i] = 1; 
+                q.push(i); 
+            }
+        }
+    }
+    cout << endl; 
+}
+void InDuongDi(){
+    if ( vs[v] == 0) cout << "-1"; 
+    else {
+        stack<int> st; 
+        st.push(v); 
+        while (st.top() != u){
+            int top = st.top();
+            st.push(e[top]); 
+        }
+        while (!st.empty()){
+            cout << st.top() << " ";
+            st.pop(); 
+        }
+    }
+}
+int main(){
+    int t = 0, x, y;
+    cin >> t;
+    while (t--){
+        memset(vs, 0, sizeof(vs)); 
+        memset(vs, 0, sizeof(e));
+        for (int i = 0; i<1005; i++) lt[i].clear(); 
+        cin >> n >> m >> u >> v; 
+        for (int i = 1; i<=m; i++){
+            cin >> x >> y; 
+            lt[x].push_back(y); 
+            lt[y].push_back(x); 
+        }
+        bfs(u); 
+        InDuongDi(); 
+        cout << endl; 
+    }
+    return 0;
+}
