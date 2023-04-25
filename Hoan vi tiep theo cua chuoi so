@@ -1,0 +1,19 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        int i; string s; 
+        cin >> i >> s;
+        string tmp = s; 
+        next_permutation(s.begin(), s.end()); 
+        reverse(tmp.begin(), tmp.end()); 
+        if (s == tmp) cout << i << " " << "BIGGEST\n"; 
+        else cout << i << " " << s << endl; 
+    }
+    return 0;
+}
