@@ -1,0 +1,40 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+struct cv{
+    int JobId, Deadline, Profit; 
+};
+bool cmp(struct cv a, struct cv b){
+    return (a.Profit > b.Profit);  
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        int n = 0; cin >> n; 
+        struct cv a[100005] ={}; 
+        for (int i = 0; i< n; i++) {
+            cin >> a[i].JobId >> a[i].Deadline >> a[i].Profit;  
+        }
+        // sap xep cong viec theo thu tu giam dan loi nhuan 
+        sort (a, a+n, cmp);
+        for (int i = 0; i<n; i++) cout << a[i].Deadline << " " << a[i].Profit << endl; 
+        int time = 0, val = 0; 
+        set<int> s; 
+        // duyet tung cong viec va chon thoi diem lam cong viec la deadline 
+        // lon nhat co the ma van dam bao ket thuc truoc hoac dung han 
+        for (int i = 0; i<n; i++){
+            while (s.find(a[i].Deadline) != s.end() and a[i].Deadline) a[i].Deadline--;
+            // neu a[i].deadline ton tai trong s thi dang ton tai 1 cv chiem dong thoi gian tuong ung -> giam dl de tim tiep 
+            // neu khong thi them vao s va cong loi nhuan  
+            if (s.find(a[i].Deadline) == s.end() and a[i].Deadline){
+                time++; 
+                val += a[i].Profit; 
+                s.insert(a[i].Deadline); 
+            }
+        }
+        cout << time << " " << val << endl; 
+    }
+    return 0;
+}
