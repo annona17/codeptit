@@ -1,0 +1,25 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        int n,s,m; 
+        cin >> n >> s >> m; 
+        int food = s*m; 
+        int day = s - s/7; 
+        int ok = 0; 
+        for (int i = 1; i<= day; i++){
+            if ( n*i >= food) {
+                ok = 1; 
+                cout << i << endl; 
+                break; 
+            }
+        }
+        if (!ok) cout << "-1\n"; 
+    }
+    return 0;
+}
