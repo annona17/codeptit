@@ -1,0 +1,36 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int n, x[20]; 
+string s; 
+vector<string> v; 
+void in(int k){
+    string tmp = ""; 
+    for (int j = 1; j<=k; j++) tmp += s[x[j]-1]; 
+    v.push_back(tmp);  
+}
+void quayluiTH(int i, int k){
+    for (int j = x[i-1]+1; j<=n-k+i; j++){
+        x[i] = j; 
+        if ( i==k) in(k); 
+        else quayluiTH(i+1, k); 
+    }
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        scanf(" "); 
+        cin >> n >> s; 
+        sort(s.begin(), s.end());  
+        for (int i = 1; i<=n; i++){
+            quayluiTH(1,i); 
+        }
+        sort(v.begin(), v.end()); 
+        for (string x:v) cout << x << " "; 
+        v.clear();
+        cout << endl; 
+    }
+    return 0;
+}
