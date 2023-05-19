@@ -1,0 +1,24 @@
+//Na
+// kiem tra cay nhi phan tim kiem 
+// kiem tra xem day co sap xep ko? 
+#include<bits/stdc++.h>
+using namespace std;
+int n, a[1005]; 
+int checkInc(){
+    for (int i = 0; i<n-1; i++){
+        if (a[i] >= a[i+1]) return 0; 
+    }
+    return 1; 
+}
+
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        cin >> n; 
+        for (int i = 0; i<n; i++) cin >> a[i]; 
+        if (checkInc() == 1) cout << "1\n"; 
+        else cout << "0\n"; 
+     }
+    return 0;
+}
