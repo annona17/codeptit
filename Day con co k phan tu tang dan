@@ -1,0 +1,27 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int n,k, a[20], x[20] = {};
+void inTH(){
+    for (int j = 1; j <= k; j++) cout << a[x[j]] << " "; 
+    cout << endl; 
+}
+void quayluiTH(int i){
+    for (int j = x[i-1] + 1; j<=n-k+i; j++){
+        x[i] = j; 
+        if ( i== k) inTH(); 
+        else quayluiTH(i+1); 
+    }
+} 
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        cin >> n >> k; 
+        for (int i = 1; i<=n; i++) cin >> a[i]; 
+        sort(a+1, a+n+1); 
+        quayluiTH(1); 
+    }
+    return 0;
+}
