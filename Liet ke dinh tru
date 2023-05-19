@@ -1,0 +1,47 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+int n, m, vs[1005]; 
+vector<int> lt[1005];
+void dfs(int u){
+    vs[u] = 1; 
+    for (int x : lt[u]){
+        if (!vs[x]) dfs(x); 
+    }
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        cin >> n >> m; 
+        for (int i = 0; i<1001; i++) lt[i].clear(); 
+        memset(vs, 0, sizeof(vs)); 
+        while (m--){
+            int u,v; 
+            cin >> u >> v; 
+            lt[u].push_back(v); 
+            lt[v].push_back(u); 
+        }
+        int k = 0, l = 0;
+        for (int i = 1; i<=n; i++){
+            if (!vs[i]) {
+                k++; 
+                dfs(i); 
+            }
+        } 
+        for (int i = 1; i<=n; i++){
+            memset(vs, 0, sizeof(vs)); 
+            l = 0; 
+            vs[i] = 1; 
+            for (int j = 1; j<=n; j++){
+                if (!vs[j]){
+                    l++; 
+                    dfs(j); 
+                }
+            }
+            if (l>k) cout << i << " "; 
+        }
+        cout << endl; 
+    }
+    return 0;
+}
