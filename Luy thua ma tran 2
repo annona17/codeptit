@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int MOD = (int) 1e9+7;
+
+int n;
+typedef vector<vector<long long>> vll;
+
+void nhan(vll &a, vll b){
+    long long c[n][n];
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            c[i][j] = 0;
+            for(int k=0;k<n;k++){
+                c[i][j] += (a[i][k]*b[k][j])%MOD;
+                c[i][j] %= MOD; 
+            }
+        }
+    }
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++) a[i][j] = c[i][j];
+}
+
+void power(vll a, int k){
+    vll res(n);
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            if(i==j) res[i].push_back(1);
+            else res[i].push_back(0);
+        }
+    }
+    while(k){
+        if(k%2 == 1) nhan(res, a);
+        nhan(a, a);
+        k /= 2;
+    }
+    long long sum = 0;
+    for(int i=0;i<n;i++){
+        sum += res[i][n-1];
+    }
+    cout << sum%MOD << endl;
+}
+
+int main()
+{
+    int t; cin >> t;
+    while(t--){
+        int k; cin >> n >> k;
+        vll a(n);
+        for(int i=0;i<n;i++)
+            for(int j=0;j<n;j++){
+                int x; cin >> x;
+                a[i].push_back(x);
+            }
+        power(a, k);
+    }
+}
