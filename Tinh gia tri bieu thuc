@@ -2,7 +2,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
-int ok; 
 vector<string>a;
 ll tinh(ll x, ll y, char c){
     if ( c== '+') return x+y; 
@@ -13,29 +12,25 @@ ll tinh(ll x, ll y, char c){
 void TinhHauTo(){
     stack<ll> st; 
     for (int i = 0; i<a.size(); i++){
-        if (isdigit(a[i][0]) || a[i].size()>1){
+        if (isdigit(a[i][0]) || a[i].size() > 1){
             if (a[i].size() == 1) st.push(a[i][0] - '0'); 
             else{
                 ll tmp = 0; 
                 if (isdigit(a[i][0])){
-                    for (int j =0; j<a[i].size(); j++){
+                    for (int j =0; j<a[i].size(); j++)
                         tmp = tmp *10 + a[i][j]-'0'; 
-                    }
                 }else{
-                    for (int j =1; j<a[i].size(); j++){
+                    for (int j =1; j<a[i].size(); j++)
                         tmp = tmp *10 + a[i][j]-'0'; 
-                    }
                     tmp = tmp * (-1); 
                 }
                 st.push(tmp);  
-            }
-             
+            }   
         }else{
             if (st.size() >= 2){
                 ll x = st.top(); st.pop(); 
                 ll y = st.top(); st.pop(); 
                 ll kq = tinh(y, x, a[i][0]);
-                //cout << x << " " << y << " " << a[i][0] << " - " << kq << endl;  
                 st.push(kq); 
             }
         } 
@@ -50,13 +45,11 @@ void TinhTienTo(){
             else{
                 ll tmp = 0; 
                 if (isdigit(a[i][0])){
-                    for (int j =0; j<a[i].size(); j++){
+                    for (int j =0; j<a[i].size(); j++)
                         tmp = tmp *10 + a[i][j]-'0'; 
-                    }
                 }else{
-                    for (int j =1; j<a[i].size(); j++){
+                    for (int j =1; j<a[i].size(); j++)
                         tmp = tmp *10 + a[i][j]-'0'; 
-                    }
                     tmp = tmp * (-1); 
                 }
                 st.push(tmp);  
@@ -78,14 +71,13 @@ int main(){
     while (t--){
         int n; cin >> n;
         scanf(" "); 
-        ok = 0; 
-        a.clear();  
         string s, tmp; 
         getline(cin, s); 
         stringstream ss(s); 
         while (ss >> tmp) a.push_back(tmp); 
-        if (a[0].size() == 1 && (a[0][0] < '0' || a[0][0] >'9' )) TinhTienTo(); 
+        if (a[0].size() == 1 && !isdigit(a[0][0]) ) TinhTienTo(); 
         else TinhHauTo(); 
+        a.clear(); 
     }
     return 0;
 }
