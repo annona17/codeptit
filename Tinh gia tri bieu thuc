@@ -1,0 +1,91 @@
+//na
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int ok; 
+vector<string>a;
+ll tinh(ll x, ll y, char c){
+    if ( c== '+') return x+y; 
+    if ( c== '-') return x-y; 
+    if ( c== '*') return x*y; 
+    else return x/y; 
+}
+void TinhHauTo(){
+    stack<ll> st; 
+    for (int i = 0; i<a.size(); i++){
+        if (isdigit(a[i][0]) || a[i].size()>1){
+            if (a[i].size() == 1) st.push(a[i][0] - '0'); 
+            else{
+                ll tmp = 0; 
+                if (isdigit(a[i][0])){
+                    for (int j =0; j<a[i].size(); j++){
+                        tmp = tmp *10 + a[i][j]-'0'; 
+                    }
+                }else{
+                    for (int j =1; j<a[i].size(); j++){
+                        tmp = tmp *10 + a[i][j]-'0'; 
+                    }
+                    tmp = tmp * (-1); 
+                }
+                st.push(tmp);  
+            }
+             
+        }else{
+            if (st.size() >= 2){
+                ll x = st.top(); st.pop(); 
+                ll y = st.top(); st.pop(); 
+                ll kq = tinh(y, x, a[i][0]);
+                //cout << x << " " << y << " " << a[i][0] << " - " << kq << endl;  
+                st.push(kq); 
+            }
+        } 
+    }
+    cout << st.top() << endl;
+}
+void TinhTienTo(){
+    stack<ll> st; 
+    for (int i = a.size()-1; i>=0; i--){
+        if (isdigit(a[i][0]) || a[i].size()>1){
+            if (a[i].size() == 1) st.push(a[i][0] - '0'); 
+            else{
+                ll tmp = 0; 
+                if (isdigit(a[i][0])){
+                    for (int j =0; j<a[i].size(); j++){
+                        tmp = tmp *10 + a[i][j]-'0'; 
+                    }
+                }else{
+                    for (int j =1; j<a[i].size(); j++){
+                        tmp = tmp *10 + a[i][j]-'0'; 
+                    }
+                    tmp = tmp * (-1); 
+                }
+                st.push(tmp);  
+            }
+        }else{
+            if(st.size() >= 2){
+                ll x = st.top(); st.pop(); 
+                ll y = st.top(); st.pop(); 
+                ll kq = tinh(x, y, a[i][0]);
+                st.push(kq); 
+            }
+        } 
+    }
+    cout << st.top() << endl;
+}
+int main(){
+    int t = 0;
+    cin >> t;
+    while (t--){
+        int n; cin >> n;
+        scanf(" "); 
+        ok = 0; 
+        a.clear();  
+        string s, tmp; 
+        getline(cin, s); 
+        stringstream ss(s); 
+        while (ss >> tmp) a.push_back(tmp); 
+        if (a[0].size() == 1 && (a[0][0] < '0' || a[0][0] >'9' )) TinhTienTo(); 
+        else TinhHauTo(); 
+    }
+    return 0;
+}
