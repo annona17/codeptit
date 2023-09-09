@@ -1,0 +1,26 @@
+Team notebook
+Các hàm trong thư viện <algorithm> của STL 
+ for_each (it1, it2, function) : 	 Gọi hàm function cho mỗi phần tử trong khoảng 
+find (it1, it2, val) : 	 Trả về iterator trỏ tới phần tử đầu tiên = val trong khoảng 
+ 	             Nếu không tìm thấy trả về iter trỏ tới cuối : v.end()
+find_if (it1, it2, function)  : 	Trả về iterator khi function trả về true  
+count (it1, it2, val)  : 	Trả về số lần xuất hiện val trong khoảng 
+count_if (it1, it2, function) : 	Trả về số phần tử làm function trả về true 
+swap(val1, val2) 
+sort (it1, it2) ;		sort (it1, it2, cmp)
+lower_bound (it1, it2, val) :		Trả về iter trỏ tới phần tử đầu tiên >= val 
+Nếu tất cả đều < val => trả về vị trí cuối v.end()
+upper_bound (it1, it2, val)		Trả về iter trỏ tới phần tử đầu tiên > val 
+Không tồn tại => trả về vị trí cuối v.end()
+binary_search (it1, it2, val) 
+// trả về true nếu trong khoảng có phần tử bằng val. Ngược lại trả về false 
+min (a, b)
+min_element(it1, it2):	trả về con trỏ tới phần tử min trong khoảng 
+*min_element(it1, it2): trả về giá trị phần tử nhỏ nhất trong khoảng 
+    10. max (a,b) ; 		max_element(it1, it2) ; 	* max_element(it1, it2)
+    11. accumulate(it1, it2) : 	Trả về tổng các phần tử trong khoảng 
+    12. next_permutation (it1, it2) 
+// Trả về hoán vị tiếp theo có thứ tự sắp xếp cao hơn hoán vị hiện tại
+    13. prev_permutation (it1, it2)	:	hoán trị trước   
+Tăng tốc độ nhập xuất : 		ios_base::sync_with_stdio(0);
+cin.tie(0); 	
